@@ -6,6 +6,7 @@ function powerSumDigTerm(n) {
 			satisfies.push(current);
 		}
 	}
+	return satisfies.pop();
 }
 
 function squareOfDigs(num) {

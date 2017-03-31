@@ -1,0 +1,1 @@
+CutTheWire(this[Object.keys(this).pop()]);

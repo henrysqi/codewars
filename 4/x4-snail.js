@@ -1,3 +1,0 @@
-snail = function(array) {
-  // enjoy
-}

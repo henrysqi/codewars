@@ -1,3 +1,0 @@
-function sumStrings(a,b) { 
-
-}

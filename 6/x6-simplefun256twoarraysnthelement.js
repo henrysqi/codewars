@@ -17,7 +17,6 @@ function twoArraysNthElement(array1, array2, n) {
   }
   return stitched[n]
 }
-
 /*
 function twoArraysNthElement(array1, array2, n) {
   let union = array1.concat(array2)

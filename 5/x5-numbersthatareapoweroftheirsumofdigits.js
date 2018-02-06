@@ -1,30 +1,29 @@
 function powerSumDigTerm(n) {
-	let satisfies = [];
-	let current = 81;
-	while (satisfies.length < n) {
-		if (squareOfDigs(current)){
-			satisfies.push(current);
+	var counter = 0;
+	var currentNum = 81;
+    while (counter < n) {
+		var digitSum = addDigits(currentNum);
+		if (AisPowerOfB(currentNum, digitSum)) {
+			counter++;
+			if (counter === n) {
+				return currentNum;
+			}
 		}
-	}
-	return satisfies.pop();
+		currentNum++;
+    }
 }
 
-function squareOfDigs(num) {
-	let numstring = num.toString();
-	let result = 0;
-	let powerResult = 0;
-	let counter = 0;
-
-	for (let i = 0; i < numstring.length; i++){
-		result += Number(numstring[i]);
-	}
-	while (powerResult < num) {
-		counter++;
-		if (powerResult === num) {
-			return true;
-		} else {
-			powerResult = Math.pow(result, counter);
-		}
-	}
-	return false;
+function addDigits(num) {
+	var digitsArray = num.toString().split("");
+	return digitsArray.reduce(function(a,b) {
+		return Number(a)+Number(b);
+	})
 }
+
+function AisPowerOfB(a, b) {
+	while (a % b === 0 && b !== 1) {
+		a = a / b
+	}
+	return a === 1;
+}
+

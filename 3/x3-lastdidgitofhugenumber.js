@@ -1,12 +1,3 @@
-/*
-1. as[1]^X mod 10
-2. find how many cycles of base
-3. next num in array to the X mod result from (2)
-4. do it till get lastnum mod Y, unless stopped earlier (every num in cycle is even and mod is 2 => 0)
-5. evaluate and go backwards
-
-*/
-
 function lastDigit(as){
 
   return getBigNum(as, 10);
@@ -17,18 +8,19 @@ function getBigNum(arr, mod) {
   if (arr.length === 1) {
     return arr[0]%mod;
   } else {
-    var lastDigitsSeen = [];
+    var valuesSeen = [];
     var i = 1;
     var base = arr.shift();
     while (true) {
-      var lastDigit = getLastDigit(Math.pow(base, i));
-      if (lastDigitsSeen.indexOf(lastDigit) === -1) {
-        lastDigitsSeen.push(lastDigit)
+      var val = (Math.pow(base, i)) % mod;
+      if (valuesSeen.indexOf(val) === -1) {
+        valuesSeen.push(val);
       } else {
         break;
       }
+      i++;
     }
-    var bigNum = getBigNum(arr, lastDigitsSeen.length);
+    var bigNum = getBigNum(arr, i-1);
     return (Math.pow(base, bigNum))%mod;
   }
 }

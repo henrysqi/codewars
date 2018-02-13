@@ -22,6 +22,7 @@ Dictionary.prototype.findMostSimilar = function(term) {
             }
         }
     }
+    console.log(wordScores)
 
     return bestWord;
 
@@ -42,35 +43,14 @@ Dictionary.prototype.findMostSimilar = function(term) {
                 lettersMatched++;
             }
         }
-        return Math.abs(word.length - lettersMatched);
+
+        var diff = Math.abs(target.length - word.length);
+        if (word.length <= target.length) {
+            return diff + (word.length - lettersMatched);
+        } else {
+            return word.length - lettersMatched;
+        }
+
+        return Math.abs(target.length - lettersMatched);
     }
 }
-
-/*
-
-example:
-beer
-barrel
-
-b:1 -> 0
-a:1 
-r:2 -> 1
-e:1 -> 0
-l:1
-
-lettersMatched = 3
-word.length - lettersMatched = score => 3
-
-only thing that matters is if the same letters are in both words, unless they are the same?
-
-rank by # of changes
-
-how to get # of changes
-    store number of occurrences of letters in {} for dictWord
-    loop thru target, if letter exist in dictWord {}, counter--, lettersMatched++
-    get absolute difference between lettersMatched and word.length => score
-    return word in dictionary with lowest score
-
-*/
-
-
